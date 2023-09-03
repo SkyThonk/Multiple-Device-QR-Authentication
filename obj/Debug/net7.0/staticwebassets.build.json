@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "dlwv2BJ/smDZWW5SagpEr0XMoSYpvNq5g9XBDtMgLmc=",
+  "Source": "MultiDeviceQrLogin",
+  "BasePath": "_content/MultiDeviceQrLogin",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

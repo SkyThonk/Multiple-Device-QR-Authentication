@@ -15,6 +15,7 @@ using MultiDeviceQrLogin.Interfaces;
 using MultiDeviceQrLogin.Services;
 using dotenv.net;
 using MultiDeviceQrLogin.Decorators;
+using MultiDeviceQrLogin.Hubs;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,6 +57,8 @@ builder.Services.AddSwaggerGen(
     }
 );
 
+builder.Services.AddSignalR();
+
 //JWT Configuration
 builder.Services.AddAuthentication(options =>
 {
@@ -93,22 +96,6 @@ builder.Services.AddControllersWithViews(options =>{
     options.Filters.Add(typeof(JwtAuthorizeFilter));
 });
 
-// builder.Services.AddMvc(options => {
-//     options.Filters.Add(new JwtAuthorizeFilter(builder.Configuration));
-// });
-
-
-//To ensures that there's a single instance of JwtSecurityTokenHandlerWrapper throughout the application's lifetime:
-// builder.Services.AddSingleton<JwtSecurityTokenHandlerWrapper>();
-
-// Get the IServiceProvider from the dependency injection container.
-
-// builder.Services.AddControllers(options => {
-//     options.Filters.Add(new JwtAuthorizeFilter(
-//         builder.Services.BuildServiceProvider().GetRequiredService<JwtSecurityTokenHandlerWrapper>()
-//     ));
-// });
-
 builder.Services.AddRateLimiter(rateLimiterOptions =>
 {
     rateLimiterOptions.AddFixedWindowLimiter("fixed", options =>
@@ -122,10 +109,12 @@ builder.Services.AddRateLimiter(rateLimiterOptions =>
 
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IUserService, UserService>();
-// builder.Services.AddScoped<JwtMiddleware>();
+
 
 
 var app = builder.Build();
+
+app.UseWebSockets();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -134,17 +123,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseRateLimiter();
 
 app.UseMiddleware<ExceptionHandlerMiddleware>();
-// app.UseMiddleware<JwtMiddleware>();
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
 
 app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<QRLoginHub>("qrlogin");
 
 app.Run();

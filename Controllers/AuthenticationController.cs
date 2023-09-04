@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using MultiDeviceQrLogin.Interfaces;
 
-namespace MultiDeviceQrLogin.Controllers.v1;
+namespace MultiDeviceQrLogin.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[Route("api/[controller]")]
 [EnableRateLimiting("fixed")]
 public class AuthenticationController : ControllerBase
 {

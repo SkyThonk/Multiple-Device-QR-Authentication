@@ -1,10 +1,13 @@
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using MultiDeviceQrLogin.Interfaces;
 
-namespace MultiDeviceQrLogin;
+namespace MultiDeviceQrLogin.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
+[EnableRateLimiting("fixed")]
 public class UserController: ControllerBase{
     private readonly IUserService _userService;
     private readonly JwtSecurityTokenHandlerWrapper _jwtSecurityTokenHandler;

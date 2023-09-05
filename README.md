@@ -18,7 +18,7 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository to your local machine:
 
    ```shell
-   git clone https://github.com/yourusername/your-repo-name.git
+   https://github.com/SkyThonk/Multiple-Device-QR-Authentication.git
 Open the project in your code editor.
 
 Configure your ASP.NET Core 7 environment and dependencies.

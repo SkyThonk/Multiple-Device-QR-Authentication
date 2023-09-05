@@ -28,6 +28,3 @@ dotnet run
 
 
 Visit http://localhost:5000 in your browser to access the authentication system.
-
-License
-This project is licensed under the MIT License. See the LICENSE file for details.

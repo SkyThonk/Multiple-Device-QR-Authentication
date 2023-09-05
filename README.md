@@ -24,15 +24,12 @@ Open the project in your code editor.
 Configure your ASP.NET Core 7 environment and dependencies.
 
 Run the application:
-
-
 dotnet run
+
+
 Visit http://localhost:5000 in your browser to access the authentication system.
 
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
-
-vbnet
-Copy code
 
 Feel free to customize this README according to your project's specifics and add any additional information that you think is necessary. Good luck with your project!

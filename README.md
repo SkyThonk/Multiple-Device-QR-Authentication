@@ -29,34 +29,6 @@ Run the application:
 dotnet run
 Visit http://localhost:5000 in your browser to access the authentication system.
 
-Usage
-Register your device on the system.
-Generate a QR code for your device.
-Scan the QR code from another device to authenticate.
-Code Examples
-Here are some code snippets that demonstrate key aspects of the project:
-
-Generating a QR Code
-// Code example for generating a QR code
-public IActionResult GenerateQRCode()
-{
-    // Generate QR code logic here
-    // ...
-    return Ok(qrCode);
-}
-Authenticating via Websockets
-
-Copy code
-// Code example for handling Websockets authentication
-public async Task AuthenticateWebSocketConnection()
-{
-    // WebSocket authentication logic here
-    // ...
-    await Clients.Caller.SendAsync("Authenticated", isAuthenticated);
-}
-Contributing
-Contributions are welcome! Please follow the contribution guidelines in this repository.
-
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
